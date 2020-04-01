@@ -6,17 +6,19 @@ import Total from "./components/Total";
 import "./styles.css";
 
 class App extends Component {
-  state = {
-    counters: [
-      { id: 1, quantity: 0, label: "Flat White" },
-      { id: 2, quantity: 2, label: "Latte" },
-      { id: 3, quantity: 8, label: "Long Black" }
-    ]
-  };
+  constructor (props) {
+    super(props);
+
+    this.state = {
+      counters: [
+        { id: 1, quantity: 0, label: "Flat White" },
+        { id: 2, quantity: 2, label: "Latte" },
+        { id: 3, quantity: 8, label: "Long Black" }
+      ]
+    };
+  }
 
   counterUpdate (id, quantity) {
-    let counter = this.state.counters.find(counter => counter.id === id);
-
     this.setState(state => {
       state.counters.find(counter => counter.id === id).quantity = (quantity && quantity >= 0) ? quantity : 0;
       return {
@@ -40,7 +42,7 @@ class App extends Component {
           <Total counters={this.state.counters} />
         </div>
 
-       </main>
+      </main>
     );
   }
 }
