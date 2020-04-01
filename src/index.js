@@ -14,16 +14,27 @@ class App extends Component {
     ]
   };
 
+  counterUpdate (id, quantity) {
+    let counter = this.state.counters.find(counter => counter.id === id);
+
+    this.setState(state => {
+      state.counters.find(counter => counter.id === id).quantity = (quantity && quantity >= 0) ? quantity : 0;
+      return {
+        state
+      };
+    });
+  }
+
   render() {
     return (
-      // Feel free to delete the Instructions section
       <main>
 
-        <div class="order">
+        <div className="order">
           {this.state.counters.map(counter => (
             <Counter
-              key={counter.id}
-              counter={counter}
+              key={ counter.id }
+              counter={ counter }
+              counterUpdate={ this.counterUpdate.bind(this) }
             />
           ))}
           <Total counters={this.state.counters} />

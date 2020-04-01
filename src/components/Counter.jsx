@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
 export default function Counter( props ) {
-	const { id, label } = props.counter;
-	const [quantity, setQuantity] = useState(props.counter.quantity);
+	const { id, label, quantity} = props.counter;
 
 	return (
 		<div className="counter">
@@ -10,9 +9,9 @@ export default function Counter( props ) {
 				{label}
 			</div>
 			<div className="counter-quantity">
-				<button onClick={() => setQuantity(quantity - 1)}>-</button>
+				<button onClick={() => props.counterUpdate(id, quantity - 1)}>-</button>
 				<span>{quantity}</span>
-				<button onClick={() => setQuantity(quantity + 1)}>+</button>
+				<button onClick={() => props.counterUpdate(id, quantity + 1)}>+</button>
 			</div>
 		</div>
 	);
