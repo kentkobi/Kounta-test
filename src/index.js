@@ -1,28 +1,28 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import Counter from "./components/Counter";
-import Total from "./components/Total";
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import Counter from './components/Counter';
+import Total from './components/Total';
 
-import "./styles.css";
+import './styles.css';
 
 class App extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {
       counters: [
-        { id: 1, quantity: 0, label: "Flat White" },
-        { id: 2, quantity: 2, label: "Latte" },
-        { id: 3, quantity: 8, label: "Long Black" }
-      ]
+        { id: 1, quantity: 0, label: 'Flat White' },
+        { id: 2, quantity: 2, label: 'Latte' },
+        { id: 3, quantity: 8, label: 'Long Black' },
+      ],
     };
   }
 
-  counterUpdate (id, quantity) {
-    this.setState(state => {
-      state.counters.find(counter => counter.id === id).quantity = (quantity && quantity >= 0) ? quantity : 0;
+  counterUpdate(id, quantity) {
+    this.setState((state) => {
+      state.counters.find((counter) => counter.id === id).quantity = (quantity && quantity >= 0) ? quantity : 0;
       return {
-        state
+        state,
       };
     });
   }
@@ -32,11 +32,11 @@ class App extends Component {
       <main>
 
         <div className="order">
-          {this.state.counters.map(counter => (
+          {this.state.counters.map((counter) => (
             <Counter
-              key={ counter.id }
-              counter={ counter }
-              counterUpdate={ this.counterUpdate.bind(this) }
+              key={counter.id}
+              counter={counter}
+              counterUpdate={this.counterUpdate.bind(this)}
             />
           ))}
           <Total counters={this.state.counters} />
@@ -47,5 +47,5 @@ class App extends Component {
   }
 }
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 ReactDOM.render(<App />, rootElement);
