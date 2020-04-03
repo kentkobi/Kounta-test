@@ -1,7 +1,9 @@
 import React from "react";
 
 export default function Counter( props ) {
-	const { id, label, quantity} = props.counter;
+	const { id } = props.key;
+	const { label, quantity} = props.counter;
+	const { counterUpdate } = props.counterUpdate;
 
 	return (
 		<div className="counter">
@@ -9,9 +11,9 @@ export default function Counter( props ) {
 				{label}
 			</div>
 			<div className="counter-quantity">
-				<button onClick={() => props.counterUpdate(id, quantity - 1)}>-</button>
+				<button onClick={() => counterUpdate(id, quantity - 1)}>-</button>
 				<span>{quantity}</span>
-				<button onClick={() => props.counterUpdate(id, quantity + 1)}>+</button>
+				<button onClick={() => counterUpdate(id, quantity + 1)}>+</button>
 			</div>
 		</div>
 	);
