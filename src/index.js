@@ -34,7 +34,6 @@ class App extends Component {
         <div className="order">
           {this.state.counters.map((counter) => (
             <Counter
-              key={counter.id}
               counter={counter}
               counterUpdate={this.counterUpdate.bind(this)}
             />

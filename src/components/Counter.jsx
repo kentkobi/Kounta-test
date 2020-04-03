@@ -1,8 +1,7 @@
 import React from "react";
 
 export default function Counter( props ) {
-	const { id } = props.key;
-	const { label, quantity} = props.counter;
+	const { id, label, quantity} = props.counter;
 	const { counterUpdate } = props.counterUpdate;
 
 	return (
